@@ -13,7 +13,7 @@ const directions = {
 	right: 'marginLeft',
 	left: 'marginRight',
 	down: 'marginTop',
-	up: 'marginBottom'
+	up: 'marginBottom',
 }
 
 export default function Fade({
@@ -21,7 +21,7 @@ export default function Fade({
 	direction,
 	distance,
 	duration,
-	delay
+	delay,
 }: React.PropsWithChildren<Props>) {
 	const margin = directions[direction]
 	console.log(margin)
@@ -33,8 +33,7 @@ export default function Fade({
 
 	useEffect(() => {
 		setTimeout(() => set({ opacity: 1, [margin]: distance }), delay)
-		
-	}, [distance, margin, set])
+	}, [distance, margin, set, delay])
 
 	return <Fader style={props}>{children}</Fader>
 }

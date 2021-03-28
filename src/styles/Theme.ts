@@ -1,15 +1,19 @@
 export const theme = {
 	colors: {
-		primary: '#a64d79',
-		secondary: '#B35949',
+		primary: '#FD6585',
+		secondary: '#FFD3A5',
 		darkBlueText: '#272341',
-		whitcolor: '#fff',
+		whitecolor: '#fff',
 		darkgrey: '#333333',
+		aboutsecondary: '#A64DB6',
+		aboutprimary: '#F1CA74',
+		projectsecondary: '#FAD7A1',
+		projectprimary: '#E96D71',
 	},
 
 	fontSize: {
-		defaultfontsize: '1.6rem',
+		defaultfontsize: '1.2rem',
 		bigfontsize: '4rem',
-		midfontsize: '2.5rem',
+		midfontsize: '2rem',
 	},
 }

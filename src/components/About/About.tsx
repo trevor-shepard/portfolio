@@ -1,38 +1,34 @@
 import React, { useContext } from 'react'
 import styled from '@emotion/styled'
-import Title from './Title'
 import Fade from 'components/Shared/Fade'
 import PortfolioContext from 'context/context'
-import {
-	CardContainer,
-	ResumeBtn,
-} from 'components/Shared/styled'
-const About = () => {
+import { CardContainer, CtaBtn } from 'components/Shared/styled'
+function About({ projects }: { projects: () => void }) {
 	const { about } = useContext(PortfolioContext)
 	const { img, paragraphOne, paragraphTwo, paragraphThree, resume } = about
 
 	return (
 		<AboutContainer>
-			<Title title="ABOUT ME" />
+			<TitleRow>
+				<Fade direction="down" distance={40} duration={600} delay={100}>
+					<Title>About</Title>
+				</Fade>
+			</TitleRow>
+
 			<RowCentered>
 				<ColumnCenteredLeft>
-					<Fade direction="right" distance={60} duration={600} delay={300}>
-						<Img src={img} alt='me' />
+					<Fade direction="right" distance={100} duration={600} delay={300}>
+						<Img src={img} alt="me" />
 					</Fade>
 				</ColumnCenteredLeft>
 				<ColumnCenteredRight>
-					<Fade direction="up" distance={100} duration={600} delay={900}>
-						<Paragraph>
-							{paragraphOne}
-						</Paragraph>
-						<Paragraph>
-							{paragraphTwo}
-						</Paragraph>
-						<Paragraph>
-							{paragraphThree}
-						</Paragraph>
-					
-						<ResumeBtn href={resume}>resume</ResumeBtn>
+					<Fade direction="right" distance={50} duration={600} delay={600}>
+						<Paragraph>{paragraphOne}</Paragraph>
+						<Paragraph>{paragraphTwo}</Paragraph>
+						<Paragraph>{paragraphThree}</Paragraph>
+
+						<ProjectBtn onClick={projects}>projects</ProjectBtn>
+						<ResumeBtn onClick={() => window.open(resume)}>resume</ResumeBtn>
 					</Fade>
 				</ColumnCenteredRight>
 			</RowCentered>
@@ -40,13 +36,28 @@ const About = () => {
 	)
 }
 
+const TitleRow = styled.div`
+	height: 35%;
+	width: 100%;
+	display: flex;
+`
+
+const Title = styled.div`
+	font-size: ${(props) => props.theme.fontSize.bigfontsize};
+	font-weight: 700;
+	margin-left: 100px;
+	margin-top: 50px;
+	color: ${(props) => props.theme.colors.darkBlueText};
+`
+
 const AboutContainer = styled(CardContainer)`
-	${(props) => props.theme.colors.primary};
-	background-image: linear-gradient(
+	transform: rotate(-180deg) scale(-1, 1);
+	background-color: ${(props) => props.theme.colors.whitecolor};
+	/* background-image: linear-gradient(
 		135deg,
 		${(props) => props.theme.colors.primary} 0%,
 		${(props) => props.theme.colors.secondary} 100%
-	);
+	); */
 `
 
 export const RowCentered = styled.div`
@@ -58,14 +69,9 @@ export const RowCentered = styled.div`
 export const ColumnCenteredLeft = styled.div`
 	display: flex;
 	flex-direction: column;
-	width: 50%;
-	height: 100%;
 `
 export const ColumnCenteredRight = styled.div`
 	display: flex;
-	padding-right: 43px;
-	padding-left: 43px;
-	height: 100%;
 `
 
 const Img = styled.img`
@@ -76,9 +82,43 @@ const Img = styled.img`
 
 const Paragraph = styled.p`
 	margin-top: 0;
-	color: ${(props) => props.theme.colors.whitcolor};
-	
+	font-weight: 500;
+	color: ${(props) => props.theme.colors.darkBlueText};
+`
 
+export const ResumeBtn = styled(CtaBtn)`
+	color: ${(props) => props.theme.colors.darkBlueText};
+	border: 2px solid ${(props) => props.theme.colors.darkBlueText};
+	&::after {
+		background: ${(props) => props.theme.colors.darkgrey};
+	}
+
+	&:hover {
+		color: ${(props) => props.theme.colors.secondary};
+		text-decoration: none;
+
+		&::after {
+			width: 100%;
+		}
+	}
+	margin-right: 10px;
+`
+export const ProjectBtn = styled(CtaBtn)`
+	color: ${(props) => props.theme.colors.darkBlueText};
+	border: 2px solid ${(props) => props.theme.colors.darkBlueText};
+	&::after {
+		background: ${(props) => props.theme.colors.darkgrey};
+	}
+
+	&:hover {
+		color: ${(props) => props.theme.colors.aboutprimary};
+		text-decoration: none;
+
+		&::after {
+			width: 100%;
+		}
+	}
+	margin-right: 10px;
 `
 
 export default About

@@ -1,83 +1,115 @@
-import React  from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from '@emotion/styled'
-import { animated, 
-	// useSpring 
-} from 'react-spring'
+import { animated, useSpring } from 'react-spring'
+import { AiFillGithub, AiFillLinkedin } from 'react-icons/ai'
 import About from 'components/About/About'
+import Hero from 'components/Hero/Hero'
+import Projects from 'components/Projects/Projects'
 // const calc = (x: number, y: number) => [
 // 	-(y - window.innerHeight / 2) / 100,
 // 	(x - window.innerWidth / 2) / 100,
 // 	1.0001,
 // ]
-// const trans = (x: number, y: number, s: number) =>
-// 	`perspective(600px) rotateX(${x}deg) rotateY(${y}deg) scale(${s})`
+const trans = (x: number, y: number, s: number) =>
+	`perspective(600px) rotateX(${x}deg) rotateY(${y}deg) scale(${s})`
 
 function Card() {
-	// const [screen, setScreen] = useState<
-	// 	'hero' | 'about' | 'projects' | 'contact'
-	// >('about')
-	// const [props, set] = useSpring(() => ({
-	// 	xys: [0, 0, 1],
-	// 	config: { mass: 20, tension: 200, friction: 200 },
-	// }))
-	// const [toggle, setToggle] = useState(false)
-	// const [toggling, setToggling] = useState(false)
-	// const [isDesktop, setIsDesktop] = useState(false)
-	// const [isMobile, setIsMobile] = useState(false)
+	const [screen, setScreen] = useState<
+		'hero' | 'about' | 'projects' | 'contact'
+	>('hero')
+	const [props, set] = useSpring(() => ({
+		xys: [0, 0, 1],
+		config: { mass: 20, tension: 200, friction: 200, duration: 500 },
+	}))
 
-	// useEffect(() => {
-	// 	if (window.innerWidth > 769) {
-	// 		setIsDesktop(true)
-	// 		setIsMobile(false)
-	// 	} else {
-	// 		setIsMobile(true)
-	// 		setIsDesktop(false)
-	// 	}
-	// }, [])
+	useEffect(() => {
+		switch (screen) {
+			case 'hero':
+				set({ xys: [0, 0, 1] })
+				break
+			case 'about':
+				set({ xys: [-180, 0, 1] })
+				break
+			case 'projects':
+				set({ xys: [0, 180, 1] })
+				break
+			default:
+				break
+		}
+	}, [screen, set])
 
-	// useEffect(() => {
-	// 	setToggling(true)
-	// 	switch (screen) {
-	// 		case 'hero':
-	// 			set({ xys: [180, 0, 1] })
-	// 			break
-	// 		case 'about':
-	// 			set({ xys: [-180, 0, 1] })
-	// 			break
-	// 		case 'projects':
-	// 			set({ xys: [0, 180, 1] })
-	// 			break
-	// 		case 'hero':
-	// 			set({ xys: [, -180, 1] })
-	// 			break
-	// 		default:
-	// 			break
-	// 	}
-
-	// 	setTimeout(() => setToggling(false), 5000)
-	// }, [toggle])
-	// useEffect(() => {
-	// 	console.log('screen changed!')
-
-	// }, [screen, set ])
+	const getScreen = () => {
+		switch (screen) {
+			case 'hero':
+				return <Hero flip={() => setScreen('about')} />
+			case 'about':
+				return <About projects={() => setScreen('projects')} />
+			case 'projects':
+				return <Projects flip={() => setScreen('projects')} />
+			default:
+				return <Hero flip={() => setScreen('about')} />
+		}
+	}
 
 	return (
-		<CardContainer
-			// onMouseMove={({ clientX: x, clientY: y }) => set({ xys: calc(x, y) })}
-			// onMouseLeave={() => {
-			// 	if (toggling) return null
-			// 	set({ xys: [0, 0, 1] })
-			// }}
-			// @ts-ignore
-			// style={{ transform: props.xys.interpolate(trans) }}
-		>
-			 <About />
-		</CardContainer>
+		<Screen screen={screen}>
+			<Icons>
+				<AiFillGithub
+					size="25px"
+					style={{
+						cursor: 'pointer',
+						margin: '10px'
+					}}
+					onClick={() => window.open('https://github.com/trevor-shepard')}
+				/>
+				<AiFillLinkedin
+					size="25px"
+					style={{
+						cursor: 'pointer',
+						margin: '10px'
+					}}
+					onClick={() => window.open('https://www.linkedin.com/in/trevor-shepard-3a9b92a2/')}
+				/>
+			</Icons>
+			<CardContainer
+				// onMouseMove={({ clientX: x, clientY: y }) => set({ xys: calc(x, y) })}
+				// onMouseLeave={() => {
+				// 	if (toggling) return null
+				// 	set({ xys: [0, 0, 1] })
+				// }}
+				// @ts-ignore
+				style={{ transform: props.xys.interpolate(trans) }}
+				screen={screen}
+			>
+				{getScreen()}
+			</CardContainer>
+		</Screen>
 	)
 }
 
-const CardContainer = styled(animated.div)`
-	width: 900px;
+const Screen = styled.div<{ screen: string }>`
+	height: 100%;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	transition: background-image 0.5s;
+	background-image: ${(props) => {
+		if (props.screen === 'about')
+			return `linear-gradient( 135deg,
+				${props.theme.colors.aboutprimary} 10%,
+			${props.theme.colors.aboutsecondary} 100%
+		);`
+		if (props.screen === 'projects')
+			return `linear-gradient( 135deg,
+				${props.theme.colors.projectsecondary} 40%,
+			${props.theme.colors.projectprimary} 60%
+		);`
+	}};
+`
+
+const CardContainer = styled(animated.div)<{ screen: string }>`
+	width: 1000px;
 	height: 600px;
 	background: grey;
 	border-radius: 5px;
@@ -86,7 +118,27 @@ const CardContainer = styled(animated.div)`
 	box-shadow: 0px 10px 30px -5px rgba(0, 0, 0, 0.3);
 	transition: box-shadow 0.5s;
 	will-change: transform;
-	border: 15px solid white;
+	border: 5px solid
+		${(props) => {
+			switch (props.screen) {
+				case 'about':
+					return props.theme.colors.whitecolor
+				case 'projects':
+					return props.theme.colors.darkBlueText
+
+				default:
+					return props.theme.colors.whitecolor
+			}
+		}};
+`
+
+const Icons = styled.div`
+	position: absolute;
+	display: flex;
+	flex-direction: row;
+	right: 0;
+	top: 0;
+	padding: 20px;
 `
 
 export default Card

@@ -32,17 +32,17 @@ export const aboutData = {
 export const projectsData = [
 	{
 		id: nanoid(),
-		img: 'project.jpg',
+		img: Images.ProjectImage,
 		title: 'Southern Solidarity Maps Project',
 		info:
-			'interactive map for Southern Solidarity members to track interactions with Community Members',
+			'Platform for Southern Solidarity members to track interactions with Community Members',
 		info2: '',
 		url: 'https://soso-maps.vercel.app/',
 		repo: 'https://github.com/trevor-shepard/stf-web', // if no repo, the button will not show up
 	},
 	{
 		id: nanoid(),
-		img: 'project.jpg',
+		img: Images.ProjectImage,
 		title: 'Shame to Fame',
 		info: 'Gamified Habit Tracking Social Platform ',
 		info2:
@@ -52,7 +52,7 @@ export const projectsData = [
 	},
 	{
 		id: nanoid(),
-		img: 'project.jpg',
+		img: Images.ProjectImage,
 		title: 'IncubateMe',
 		info: 'We help micro-entrepreneurs launch and run businesses.',
 		info2:

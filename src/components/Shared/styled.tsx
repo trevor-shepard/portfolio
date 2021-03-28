@@ -19,20 +19,22 @@ export const SectionTitle = styled.h2`
 	margin: 0px;
 	margin-bottom: 4.5rem;
 	font-size: ${(props) => props.theme.fontSize.bigfontsize};
-	color: ${(props) => props.theme.colors.whitcolor};
+	color: ${(props) => props.theme.colors.whitecolor};
 	font-weight: bold;
 	text-transform: uppercase;
 `
 
 export const CtaBtn = styled.a`
+	cursor: pointer;
 	display: inline-block;
 	position: relative;
 	padding: 0.8rem ${(props) => props.theme.fontSize.defaultfontsize};
-	color: ${(props) => props.theme.colors.whitcolor};
+	color: ${(props) => props.theme.colors.whitecolor};
 	font-weight: bold;
 	line-height: 1;
 	z-index: 1;
 	text-decoration: none;
+	text-transform: uppercase;
 	transition: all cubic-bezier(0.19, 1, 0.22, 1) 0.6s;
 	&::after {
 		content: '';
@@ -46,22 +48,3 @@ export const CtaBtn = styled.a`
 		transition: all cubic-bezier(0.19, 1, 0.22, 1) 0.3s;
 	}
 `
-
-export const ResumeBtn = styled(CtaBtn)`
-	color: ${(props) => props.theme.colors.whitcolor};
-	border: 2px solid ${(props) => props.theme.colors.whitcolor};
-	&::after {
-		background: ${(props) => props.theme.colors.darkgrey};
-	}
-
-	&:hover {
-		color: ${(props) => props.theme.colors.secondary};
-		text-decoration: none;
-
-		&::after {
-			width: 100%;
-		}
-	}
-`
-
-

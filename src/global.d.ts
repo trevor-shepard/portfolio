@@ -6,8 +6,12 @@ declare module '@emotion/react' {
 			primary: string
 			secondary: string
 			darkBlueText: string
-			whitcolor: string
+			whitecolor: string
 			darkgrey: string
+			projectprimary: string
+			projectsecondary: string
+			aboutsecondary: string
+			aboutprimary: string
 		}
 
 		fontSize: {
