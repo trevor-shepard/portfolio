@@ -1,2 +1,6 @@
 export { default as AboutImage } from './profile.jpeg'
 export { default as ProjectImage } from './projects.png'
+export { default as BackIcon } from './backIcon.png'
+export { default as SoSoGif } from './soso.gif'
+export { default as STFGif } from './stf.gif'
+export { default as incubateMe } from './incubateMe.gif'

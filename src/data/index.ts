@@ -32,7 +32,7 @@ export const aboutData = {
 export const projectsData = [
 	{
 		id: nanoid(),
-		img: Images.ProjectImage,
+		img: Images.SoSoGif,
 		title: 'Southern Solidarity Maps Project',
 		info:
 			'Platform for Southern Solidarity members to track interactions with Community Members',
@@ -42,7 +42,7 @@ export const projectsData = [
 	},
 	{
 		id: nanoid(),
-		img: Images.ProjectImage,
+		img: Images.STFGif,
 		title: 'Shame to Fame',
 		info: 'Gamified Habit Tracking Social Platform ',
 		info2:
@@ -52,13 +52,13 @@ export const projectsData = [
 	},
 	{
 		id: nanoid(),
-		img: Images.ProjectImage,
+		img: Images.incubateMe,
 		title: 'IncubateMe',
 		info: 'We help micro-entrepreneurs launch and run businesses.',
 		info2:
 			'We offer business concierge service channeling cutting edge tech tools, thought leadership, and business strategy and operational help to micro-entrepreneurs.',
-		url: '',
-		repo: 'https://incubate-me-web.vercel.app/', // if no repo, the button will not show up
+		url: 'https://incubate-me-web.vercel.app/',
+		repo: 'https://github.com/trevor-shepard/incubate-me-web', // if no repo, the button will not show up
 	},
 ]
 

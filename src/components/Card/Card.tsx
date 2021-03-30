@@ -5,6 +5,7 @@ import { AiFillGithub, AiFillLinkedin } from 'react-icons/ai'
 import About from 'components/About/About'
 import Hero from 'components/Hero/Hero'
 import Projects from 'components/Projects/Projects'
+import Back from 'components/Shared/Back'
 // const calc = (x: number, y: number) => [
 // 	-(y - window.innerHeight / 2) / 100,
 // 	(x - window.innerWidth / 2) / 100,
@@ -53,6 +54,7 @@ function Card() {
 
 	return (
 		<Screen screen={screen}>
+			
 			<Icons>
 				<AiFillGithub
 					size="25px"
@@ -81,6 +83,7 @@ function Card() {
 				style={{ transform: props.xys.interpolate(trans) }}
 				screen={screen}
 			>
+				<Back current={screen} handleClick={setScreen} />
 				{getScreen()}
 			</CardContainer>
 		</Screen>
@@ -109,6 +112,7 @@ const Screen = styled.div<{ screen: string }>`
 `
 
 const CardContainer = styled(animated.div)<{ screen: string }>`
+	position: relative;
 	width: 1000px;
 	height: 600px;
 	background: grey;

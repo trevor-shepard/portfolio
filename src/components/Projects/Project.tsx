@@ -52,6 +52,7 @@ export const ColumnCenteredRight = styled.div`
 	display: flex;
 	height: 100%;
 	width: 100%;
+	justify-content: center;
 `
 
 const Title = styled.div`
@@ -103,8 +104,8 @@ const LiveBtn = styled(CtaBtn)`
 
 const Img = styled.img`
 	object-fit: cover;
-	width: 350px;
-	height: auto;
+	height: 375px;
+	width: auto;
 `
 
 export default Project
