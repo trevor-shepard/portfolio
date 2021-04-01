@@ -30,7 +30,7 @@ function Project({
 			</ColumnCenteredLeft>
 			<ColumnCenteredRight>
 				<Fade direction="right" distance={50} duration={600} delay={600}>
-					<Img src={img} alt="me" />
+					<Img key={img} src={img} alt="me" />
 				</Fade>
 			</ColumnCenteredRight>
 		</ProjectContainer>

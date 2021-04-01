@@ -38,6 +38,7 @@ const Container = styled.div`
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	overflow: none;
 `
 
 export default App
