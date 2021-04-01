@@ -19,10 +19,9 @@ function Projects({ flip }: { flip: () => void }) {
 
 	useEffect(() => {
 		set({ x: -100, opacity: 1 })
-		// setTimeout(() => {
-
-		// }, 1000)
 	})
+
+	const ProjectComponents = projects.map(project => <Project project={project} />)
 
 	return (
 		<ProjectsContainer>
@@ -31,7 +30,7 @@ function Projects({ flip }: { flip: () => void }) {
 					<Title>Projects</Title>
 				</Fade>
 			</TitleRow>
-			<Project project={projects[projIndex]} />
+			{ProjectComponents[projIndex]}
 			<Dots
 				// @ts-ignore
 				style={{ bottom: props.x.interpolate(trans), opacity: props.opacity }}
